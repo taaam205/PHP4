@@ -5,12 +5,12 @@ $con = mysqli_connect('localhost','root','','sessionpractical');
 if(isset($_POST['done'])){
 
     $id = $_POST['id'];
-    $name = $_POST['name'];
+    $name = $_POST['user'];
     $password = $_POST['password'];
-    $q = "UPDATE `signup` SET `id`=$id,`name`=$name,`password`=$password WHERE id=$id";
-
+    $q = "UPDATE signup SET name='".$name."',password='".$password."'WHERE id=".$id;
+    // echo($q);
     $query = mysqli_query($con,$q);
-
+    echo($query);
     header('location:home.php');
 }
 
@@ -50,6 +50,7 @@ if(isset($_POST['done'])){
                     <br>
                     <button type="submit" class="btn btn-primary"> Submit </button>
                 	<input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
+                    <input type="hidden" name="done" value="1">
                 </form>
             </div>
             
